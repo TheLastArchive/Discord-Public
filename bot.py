@@ -15,11 +15,11 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    """Deletes Counting Wins YT link"""
 
     if message.author == client.user:
         return
 
+    """Deletes Counting Wins YT link"""
     print("Counting wins check")
     if 'https://www.youtube.com/watch?v=QiDqntDy39U' in message.content: 
         await message.delete()
@@ -40,9 +40,6 @@ async def on_message(message):
         with open('s0urvideos.txt', 'a') as f:
             f.write(message.content + '\n')
             print("New video added to list")
-        with open('s0urvideos.txt', 'r') as f:
-            videos = f.readlines()
-            print(videos[-1])
         message.add_reaction('<:Wowee:592122719546638408>')
         return
 
@@ -58,7 +55,6 @@ async def daily_video():
     general_id = client.get_channel(target_general_id)
     await general_id.send(videos[randint(0, len(videos) - 1)])
     print("Daily S0ur video sent")
-    print(videos[-1])
 
 
 client.run()
